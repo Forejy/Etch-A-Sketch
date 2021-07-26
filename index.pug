@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport" content="width=device-width,initial-scale=1")
+    link(href="styles/styles.css" type="text/css" rel="stylesheet")
+    title Etch-A-Sketch
+  body
+    article
+      div.btn-reset
+        span.btn-reset2 Reset
+      section.grid
+        - for (var i = 1; i <= 16; i++) {
+          section.grid-row
+            - for (var j = 1; j <= 16; j++) {
+              div.square
+            - }
+        - }
+    article.modal
+      section.modal-content
+        div.container-btn-size
+          div.btn-size.btn-size1 size1
+          div.btn-size.btn-size2 size2
+          div.btn-size.btn-size3 size3
+    script(type="text/javascript" src="scripts/index.js")
