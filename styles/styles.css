@@ -63,22 +63,27 @@ caption {
   vertical-align: baseline;
   background: transparent;
 }
+body {
+  background-color: #1e1e1e;
+}
 .grid {
+  box-shadow: 0px 0px 5px 30px #323232;
   margin: 50px auto 0 auto;
+  border-radius: 30px;
   width: min-content;
-  height: 496px;
-  background-color: blue;
+  height: min-content;
+  overflow: hidden;
 }
 .grid-row {
-  margin-bottom: 1px;
   width: max-content;
+  margin-bottom: 1px;
 }
 .square {
   display: inline-block;
   vertical-align: top;
   margin-right: 1px;
-  height: 30px;
-  width: 30px;
+  height: calc(100vh/18);
+  width: calc(100vh/18);
   background-color: black;
   transition: background 0.5s ease-out;
 }

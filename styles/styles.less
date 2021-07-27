@@ -1,3 +1,5 @@
+// MARK: Reset
+
 html, body, article, section, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
   margin: 0;
   padding: 0;
@@ -7,6 +9,9 @@ html, body, article, section, div, span, applet, object, iframe, h1, h2, h3, h4,
   vertical-align: baseline;
   background: transparent;
 }
+
+
+// MARK: Utilities
 
 .bgc( @color ) {
   background-color: @color;
@@ -28,31 +33,42 @@ html, body, article, section, div, span, applet, object, iframe, h1, h2, h3, h4,
   height: @height;
 }
 
+
+// MARK: Body
+
+body {
+  .bgc(#1e1e1e);
+}
+
+// MARK: Sizing
+
+@sq-size: calc(100vh/18);
+
 .grid {
+  box-shadow: 0px 0px 5px 30px rgb(50, 50, 50);
   margin: 50px auto 0 auto;
-  width: min-content;
-  height: 496px;
-  .bgc(blue);
+  border-radius: 30px;
+  .wh(min-content, min-content);
+
+  overflow: hidden;
 }
 
 
 .grid-row {
-  margin-bottom: 1px;
   width: max-content;
+  .m(b, 1px);
 }
 
-@sq-size: 30px;
 
 .square {
   display: inline-block;
   vertical-align: top;
-  margin-right: 1px;
+  .m(r, 1px);
   height: @sq-size;
   width: @sq-size;
   .bgc(black);
   transition: background .5s ease-out;
 }
-
 
 .bg-red {
   .bgc(red);
