@@ -1,6 +1,62 @@
 // MARK: Reset
 
-html, body, article, section, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, caption {
+html,
+body,
+article,
+section,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+font,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+caption {
   margin: 0;
   padding: 0;
   border: 0;
@@ -9,7 +65,6 @@ html, body, article, section, div, span, applet, object, iframe, h1, h2, h3, h4,
   vertical-align: baseline;
   background: transparent;
 }
-
 
 // MARK: Utilities
 
@@ -23,9 +78,9 @@ html, body, article, section, div, span, applet, object, iframe, h1, h2, h3, h4,
     @l: left;
     @b: bottom;
     @r: right;
-  }
-  @temp: @margin-list[@@side];
-  margin-@{temp}:@margin;
+  };
+  @temp: @margin-list[ @@side];
+  margin-@{temp}: @margin;
 }
 
 .wh(@width, @height: @width) {
@@ -33,6 +88,9 @@ html, body, article, section, div, span, applet, object, iframe, h1, h2, h3, h4,
   height: @height;
 }
 
+.br(@border-radius) {
+  border-radius: @border-radius;
+}
 
 // MARK: Body
 
@@ -40,25 +98,29 @@ body {
   .bgc(#1e1e1e);
 }
 
-// MARK: Sizing
+// MARK: Grid
 
-@sq-size: calc(100vh/18);
+@sq-size: calc(5.6vh);
+
+.grid-container {
+  width: min-content;
+  margin: 50px auto 0px auto;
+  position: relative;
+}
 
 .grid {
   box-shadow: 0px 0px 5px 30px rgb(50, 50, 50);
-  margin: 50px auto 0 auto;
   border-radius: 30px;
   .wh(min-content, min-content);
 
   overflow: hidden;
+  margin-bottom: 40px;
 }
-
 
 .grid-row {
   width: max-content;
   .m(b, 1px);
 }
-
 
 .square {
   display: inline-block;
@@ -67,7 +129,7 @@ body {
   height: @sq-size;
   width: @sq-size;
   .bgc(black);
-  transition: background .5s ease-out;
+  transition: background 0.5s ease-out;
 }
 
 .bg-red {
@@ -92,45 +154,113 @@ body {
   cursor: pointer;
 }
 
-
 .transition-bgc--fast {
-  transition: background .4s ease-in;
+  transition: background 0.4s ease-in;
+  transition: background 1.5s ease-in;
 }
-
 
 // MARK: Modal
 
 .modal {
-  display: none;
+  display: block;
   z-index: 1;
   position: absolute;
-  top: 0;
-  .wh(100%);
-  background-color: rbga(0, 0, 0, .5);
+  width: 100%;
+  height: 0;
+
+  top: 25px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+
+.modal-transition {
+  height: calc(100% - 25px);
+  transition: height 1.5s ease-in-out;
 }
 
 .modal-content {
-  margin: 50px auto;
-  .wh(480px, 200px);
-  background-color: rgba(0, 0, 255, .4);
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
   padding: 0 auto;
-  transition: all 2s linear;
 }
 
 .container-btn-size {
-  margin: 100px auto;
-  width: max-content;
+  margin: 0 auto;
+  width: 54%;
+  height: 54%; //Valeur utilisée dans le javascript 'Handle Reset Events (+ modal)'
+  padding-top: 42%;
+  transition: all 0s;
 }
 
-.btn-size1, .btn-size2, .btn-size3 {
+.btn-size1,
+.btn-size2,
+.btn-size3 {
   display: inline-block;
-  margin: 50px 5px;
+  border-radius: 50%;
   .wh(80px);
-  .bgc(blue);
+  .bgc(white);
+
   color: white;
   text-align: center;
-  font-size: 1.5rem;
-  line-height: 80px;
-  font-weight: 900;
   cursor: pointer;
+
+  display: inline-block;
+  border-radius: 50%;
+  color: #aaa;
+  text-align: center;
+  cursor: pointer;
+  background: radial-gradient(white, #ddd);
 }
+
+.btn-size::before {
+  content: '10x10';
+  display: block;
+  width: 90%;
+  height: 90%;
+  background-color: #f1f1f1;
+
+  border-radius: 50%;
+  position: relative;
+  top: 5%;
+  left: 5%;
+  color: #d2d0d0;
+  line-height: 1rem;
+  padding-top: 36%;
+  font-size: 1.2rem;  box-sizing: border-box;
+}
+
+
+.btn-size {
+  background: radial-gradient(at 0% 0%, #e3e2e2 60%, #fff8f8);
+  width: 29.33%;
+  height: 29.33%; //Valeur utilisée dans le javascript 'Handle Reset Events (+ modal)'
+  margin: 0% 2%;
+}
+
+.btn-size::before {
+  background: radial-gradient(at 0% 0%, white, #f7f7f7 70%, #d2d0d0);
+}
+
+.circle {
+  .br(50%);
+  .wh(25px);
+
+  box-shadow: 0px 0px 1px 3px #323232;
+  background: radial-gradient(circle at 7px 7px, #272727, #303030, #323232);
+  cursor: pointer;
+
+  position: relative;
+  left: -100px;
+  top: 0px;
+}
+
+.circle:active {
+  box-shadow: 0px 0px 1px 3px #303030;
+  background: radial-gradient(circle at 7px 7px, #202020, #303030, #323232);
+}
+
+
+
+// DONETODO: Tester avec une box-shadow blanche, et une bordure noire, sans le psedo-element
+
+// DONETODO: Effacer le carré plus doucement + Faire que le modal progressivement avec la hauteut et la largeur

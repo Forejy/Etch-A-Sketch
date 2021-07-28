@@ -7,19 +7,21 @@ html(lang="en")
     title Etch-A-Sketch
   body
     article.first-article
-      div.btn-reset
+      //- div.btn-reset
         span.btn-reset2 Reset
-      section.grid
-        - for (var i = 1; i <= 16; i++) {
-          section.grid-row
-            - for (var j = 1; j <= 16; j++) {
-              div.square
-            - }
-        - }
-    article.modal
-      section.modal-content
-        div.container-btn-size
-          div.btn-size.btn-size1 size1
-          div.btn-size.btn-size2 size2
-          div.btn-size.btn-size3 size3
+      section.grid-container
+        article.modal
+          section.modal-content
+            div.container-btn-size
+              div.btn-size.btn-size1
+              div.btn-size.btn-size2
+              div.btn-size.btn-size3
+        div.circle
+        div.grid
+          - for (var i = 1; i <= 16; i++) {
+            section.grid-row
+              - for (var j = 1; j <= 16; j++) {
+                div.square
+              - }
+          - }
     script(type="text/javascript" src="scripts/index.js")

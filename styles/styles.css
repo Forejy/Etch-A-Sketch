@@ -66,13 +66,18 @@ caption {
 body {
   background-color: #1e1e1e;
 }
+.grid-container {
+  width: min-content;
+  margin: 50px auto 0px auto;
+  position: relative;
+}
 .grid {
   box-shadow: 0px 0px 5px 30px #323232;
-  margin: 50px auto 0 auto;
   border-radius: 30px;
   width: min-content;
   height: min-content;
   overflow: hidden;
+  margin-bottom: 40px;
 }
 .grid-row {
   width: max-content;
@@ -82,8 +87,8 @@ body {
   display: inline-block;
   vertical-align: top;
   margin-right: 1px;
-  height: calc(100vh/18);
-  width: calc(100vh/18);
+  height: calc(5.6vh);
+  width: calc(5.6vh);
   background-color: black;
   transition: background 0.5s ease-out;
 }
@@ -108,40 +113,85 @@ body {
 }
 .transition-bgc--fast {
   transition: background 0.4s ease-in;
+  transition: background 1.5s ease-in;
 }
 .modal {
-  display: none;
+  display: block;
   z-index: 1;
   position: absolute;
-  top: 0;
   width: 100%;
-  height: 100%;
-  background-color: rbga(0, 0, 0, 0.5);
+  height: 0;
+  top: 25px;
+  border-radius: 30px;
+  overflow: hidden;
+}
+.modal-transition {
+  height: calc(100% - 25px);
+  transition: height 1.5s ease-in-out;
 }
 .modal-content {
-  margin: 50px auto;
-  width: 480px;
-  height: 200px;
-  background-color: rgba(0, 0, 255, 0.4);
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.4);
   padding: 0 auto;
-  transition: all 2s linear;
 }
 .container-btn-size {
-  margin: 100px auto;
-  width: max-content;
+  margin: 0 auto;
+  width: 54%;
+  height: 54%;
+  padding-top: 42%;
+  transition: all 0s;
 }
 .btn-size1,
 .btn-size2,
 .btn-size3 {
-  display: inline-block;
-  margin: 50px 5px;
   width: 80px;
   height: 80px;
-  background-color: blue;
+  background-color: white;
   color: white;
+  display: inline-block;
+  border-radius: 50%;
+  color: #aaa;
   text-align: center;
-  font-size: 1.5rem;
-  line-height: 80px;
-  font-weight: 900;
   cursor: pointer;
+  background: radial-gradient(white, #ddd);
+}
+.btn-size::before {
+  content: '10x10';
+  display: block;
+  width: 90%;
+  height: 90%;
+  background-color: #f1f1f1;
+  border-radius: 50%;
+  position: relative;
+  top: 5%;
+  left: 5%;
+  color: #d2d0d0;
+  line-height: 1rem;
+  padding-top: 36%;
+  font-size: 1.2rem;
+  box-sizing: border-box;
+}
+.btn-size {
+  background: radial-gradient(at 0% 0%, #e3e2e2 60%, #fff8f8);
+  width: 29.33%;
+  height: 29.33%;
+  margin: 0% 2%;
+}
+.btn-size::before {
+  background: radial-gradient(at 0% 0%, white, #f7f7f7 70%, #d2d0d0);
+}
+.circle {
+  border-radius: 50%;
+  width: 25px;
+  height: 25px;
+  box-shadow: 0px 0px 1px 3px #323232;
+  background: radial-gradient(circle at 7px 7px, #272727, #303030, #323232);
+  cursor: pointer;
+  position: relative;
+  left: -100px;
+  top: 0px;
+}
+.circle:active {
+  box-shadow: 0px 0px 1px 3px #303030;
+  background: radial-gradient(circle at 7px 7px, #202020, #303030, #323232);
 }
