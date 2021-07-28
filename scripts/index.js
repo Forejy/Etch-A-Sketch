@@ -1,6 +1,3 @@
-// const squares = document.getElementsByClassName('square');
-
-// console.log(squares);
 const btnReset = document.getElementsByClassName('btn-reset')[0];
 const btnSizes = document.getElementsByClassName('btn-size');
 const initialColor = 'black';
@@ -59,9 +56,7 @@ function handleChangeBackgroundColor(squares = document.getElementsByClassName('
         colors = (changeColors(colors));
         str = "#" + colors[0] + colors[1] + colors[2];
         console.log(str);
-        // console.log("#" + colors);
         this.style.backgroundColor = "#" + colors[0] + colors[1] + colors[2];
-        // this.style.backgroundColor = "#" + colors;
       }
       else
         this.style.backgroundColor = initialColor;
@@ -173,6 +168,5 @@ function handleGridSize() {
 }
 
 handleGridSize();
-// document.getElementsByClassName('grid')[0].appendChild(row);
 
 
