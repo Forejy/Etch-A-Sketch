@@ -132,45 +132,36 @@ body {
   transition: background 0.5s ease-out;
 }
 
-.bg-red {
-  .bgc(red);
-}
-
-.square-blue {
-  .bgc(blue);
-}
-
-.btn-reset {
-  margin: 50px auto;
-  border-radius: 15px;
-  width: 100px;
-  height: 50px;
-  .bgc(blue);
-  color: white;
-  text-align: center;
-  font-size: 1.5rem;
-  line-height: 50px;
-  font-weight: 900;
-  cursor: pointer;
-}
-
-.transition-bgc--fast {
-  transition: background 0.4s ease-in;
+.transition-bgc--slow {
   transition: background 1.5s ease-in;
 }
 
 // MARK: Modal
 
+.block-grid {
+  display: none;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+
+  position: absolute;
+  z-index: 1;
+  top: 25px;
+}
+
 .modal {
   display: block;
-  z-index: 1;
-  position: absolute;
+  border-radius: 30px;
   width: 100%;
   height: 0;
 
+
+  position: absolute;
+  z-index: 2;
   top: 25px;
-  border-radius: 30px;
+
   overflow: hidden;
+  transition: height .5s ease-in-out;
 }
 
 .modal-transition {
@@ -187,9 +178,48 @@ body {
 .container-btn-size {
   margin: 0 auto;
   width: 54%;
-  height: 54%; //Valeur utilisée dans le javascript 'Handle Reset Events (+ modal)'
+  // height: 54%; //Height dans le javascript 'Handle Reset Events (+ modal)'
   padding-top: 42%;
   transition: all 0s;
+}
+
+.btn-size {
+  margin: 0% 2%;
+  width: 29.33%;
+  // height: 29.33%; //Height utilisée dans le javascript 'Handle Reset Events (+ modal)'
+  background: radial-gradient(at 0% 0%, #e3e2e2 60%, #fff8f8);
+}
+
+.btn-size::before {
+  display: block;
+
+  border-radius: 50%;
+  width: 90%;
+  height: 90%;
+  padding-top: 36%;
+
+  position: relative;
+  top: 5%;
+  left: 5%;
+
+  color: #d2d0d0;
+  line-height: 1rem;
+  font-size: calc(0.958084vh + 16.333px);
+
+  background-color: #f1f1f1;
+  background: radial-gradient(at 0% 0%, white, #f7f7f7 70%, #d2d0d0);
+
+  box-sizing: border-box;
+}
+
+.btn-size1:before {
+  content:'10 x 10';
+}
+.btn-size2:before {
+  content:'50 x 50';
+}
+.btn-size3:before {
+  content:'96 x 96';
 }
 
 .btn-size1,
@@ -197,10 +227,7 @@ body {
 .btn-size3 {
   display: inline-block;
   border-radius: 50%;
-  .wh(80px);
-  .bgc(white);
 
-  color: white;
   text-align: center;
   cursor: pointer;
 
@@ -209,39 +236,9 @@ body {
   color: #aaa;
   text-align: center;
   cursor: pointer;
-  background: radial-gradient(white, #ddd);
 }
 
-.btn-size::before {
-  content: '10x10';
-  display: block;
-  width: 90%;
-  height: 90%;
-  background-color: #f1f1f1;
-
-  border-radius: 50%;
-  position: relative;
-  top: 5%;
-  left: 5%;
-  color: #d2d0d0;
-  line-height: 1rem;
-  padding-top: 36%;
-  font-size: 1.2rem;  box-sizing: border-box;
-}
-
-
-.btn-size {
-  background: radial-gradient(at 0% 0%, #e3e2e2 60%, #fff8f8);
-  width: 29.33%;
-  height: 29.33%; //Valeur utilisée dans le javascript 'Handle Reset Events (+ modal)'
-  margin: 0% 2%;
-}
-
-.btn-size::before {
-  background: radial-gradient(at 0% 0%, white, #f7f7f7 70%, #d2d0d0);
-}
-
-.circle {
+.btn-reset {
   .br(50%);
   .wh(25px);
 
@@ -254,7 +251,7 @@ body {
   top: 0px;
 }
 
-.circle:active {
+.btn-reset:active {
   box-shadow: 0px 0px 1px 3px #303030;
   background: radial-gradient(circle at 7px 7px, #202020, #303030, #323232);
 }
@@ -263,4 +260,8 @@ body {
 
 // DONETODO: Tester avec une box-shadow blanche, et une bordure noire, sans le psedo-element
 
-// DONETODO: Effacer le carré plus doucement + Faire que le modal progressivement avec la hauteut et la largeur
+// DONETODO: Effacer le carré plus doucement + Faire que le modal progressivement avec la hauteur et la largeur
+
+// DONETODO: Pourquoi le bgc-slow reste après
+
+// NOTTODO: js114, cacher le block-grid plutot sur les clicks des boutons pour changer de taille

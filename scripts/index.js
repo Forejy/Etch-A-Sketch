@@ -1,8 +1,7 @@
 // const squares = document.getElementsByClassName('square');
 
 // console.log(squares);
-const btnReset = document.getElementsByClassName('circle')[0];
-const btnReset2 = document.getElementsByClassName('circle')[0];
+const btnReset = document.getElementsByClassName('btn-reset')[0];
 const btnSizes = document.getElementsByClassName('btn-size');
 const initialColor = 'black';
 
@@ -85,10 +84,11 @@ function handleResetEvents() {
   let squares = document.getElementsByClassName('square');
   let len = squares.length;
   gridContainerHeight = parseInt(window.getComputedStyle(document.getElementsByClassName('grid-container')[0]).height);
-  console.log((0.54 * 0.2933 * (gridContainerHeight - 25)) + "px");
-  btnReset2.addEventListener('click', function handler1() {
+
+  btnReset.addEventListener('click', function handler1() {
+    document.getElementsByClassName('block-grid')[0].style.display = 'block';
     for (k = 0; k <= len - 1; k++) {
-      squares[k].classList.add('transition-bgc--fast');
+      squares[k].classList.add('transition-bgc--slow');
       squares[k].style.backgroundColor = initialColor;
     }
     for(i = 0; i <= 2; i++) {
@@ -96,21 +96,35 @@ function handleResetEvents() {
     }
     modal.classList.add('modal-transition');
 
-    // modal.style.width = 100;
-    // modal.style.height = '100%';
-    // this.removeEventListener('click', handler1);
+    clickAfterClicked(this);
+
+    this.removeEventListener('click', handler1);
   })
 
-  btnReset2.addEventListener('click', function handler2() {
+  btnReset.addEventListener('click', function handler2() {
     setTimeout(function() {
-
       for(l = 0; l <= len - 1; l++) {
-          squares[l].classList.remove('transition-bgc--fast');
-          l++;
+          squares[l].classList.remove('transition-bgc--slow');
       }
-    }, 300)
+    }, 500)
+
+    setTimeout(function() {
+      document.getElementsByClassName('block-grid')[0].style.display = 'none';
+    }, 1500);
     this.removeEventListener('click', handler2);
   })
+
+
+  function clickAfterClicked(object) {
+    object.addEventListener('click', function fun2() {
+      modal.classList.remove('modal-transition');
+
+      object.removeEventListener('click', fun2);
+
+      handleResetEvents();
+    })
+  }
+
 }
 
 
@@ -122,12 +136,11 @@ function handleGridSize() {
   for(var i = 0; i <= 2; i++) {
     let temp = sizes[i];
     btnSizes[i].addEventListener('click', function () {
-      modal.style.display = 'none';
+      modal.classList.remove('modal-transition');
+
       var newGridCapacity = temp;
       var actualGrid = document.getElementsByClassName('grid')[0];
       var newSquareSize = ((parseInt(window.getComputedStyle(actualGrid).width) / newGridCapacity) - 1) + 'px';
-      console.log(newSquareSize);
-
 
       changeGridSize();
 
@@ -154,6 +167,7 @@ function handleGridSize() {
       }
       handleChangeBackgroundColor();
       handleResetEvents();
+
     })
   }
 }
