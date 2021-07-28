@@ -87,8 +87,8 @@ body {
   display: inline-block;
   vertical-align: top;
   margin-right: 1px;
-  height: calc(5.6vh);
-  width: calc(5.6vh);
+  height: min(5.6vh, 4.47vw);
+  width: min(5.6vh, 4.47vw);
   background-color: black;
   transition: background 0.5s ease-out;
 }
